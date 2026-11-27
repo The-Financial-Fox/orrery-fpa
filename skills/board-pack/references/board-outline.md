@@ -16,4 +16,6 @@ Titles are assertions that state the point of the slide, written from the approv
 | 10 | Pending sign-off | Only if any item is pending; otherwise omit | review_queue.csv |
 | A1+ | Appendix | Entity P&Ls, full variance table, method notes | variance.xlsx |
 
+Every slide carries a small footer: "Prepared with Orrery (educational tool). Draft for review by a qualified person." The cover also states that figures must be reviewed before use. In demo mode the cover says "Demo: fictional company and figures".
+
 Charts: 1600x900, labelled axes with units, favourable green, adverse red, totals neutral.

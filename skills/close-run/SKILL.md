@@ -16,6 +16,8 @@ Orchestrate a month-end close with the six Orrery agents. Agents do the work; pe
 
 ## 0. Set up the run
 
+Before anything else, tell the user once, in one short line: "Orrery is an educational tool. Its outputs are drafts for a qualified person to review, not accounting, audit, tax or financial advice. Check every figure before you rely on it." In demo mode, add that the data is fictional.
+
 1. Determine the period (YYYY-MM). Default: the most recent complete month. State the assumption.
 2. Read the close policy `orrery-close-policy.md` in the working folder. If it is missing, use the defaults in `../close-setup/references/default-policy.md` and say once that `/close-setup` can tailor them.
 3. Locate the inputs. Look for files in the working folder or attachments; match by content, not only by name:
@@ -31,7 +33,7 @@ Orchestrate a month-end close with the six Orrery agents. Agents do the work; pe
 
    If a connected ERP or planning tool can export these, use it. If inputs are missing, run the stages that have data and list what is missing; do not stop the whole close.
 4. **Demo mode.** If the user asks for a demo or has no data, generate the sample close: `python3 scripts/make_demo_data.py --out ./orrery-demo` (run from this skill's base directory, shown as "Base directory for this skill"). Then use period 2026-10, period end 2026-10-31, FY start 2026-01, sensitive accounts `1999,4100`, and say the data is fictional.
-5. Create the close folder `orrery-close/<period>/` with subfolders `recon, sentinel, variance, forecast, narrative, board`, and `review_queue.csv` with header `item_id,agent,type,entity,summary,amount,evidence,status,reviewer,decided_at,note`. Start `close_log.md` with the period, inputs found, policy values and the time.
+5. Create the close folder `orrery-close/<period>/` with subfolders `recon, sentinel, variance, forecast, narrative, board`, and `review_queue.csv` with header `item_id,agent,type,entity,summary,amount,evidence,status,reviewer,decided_at,note`. Start `close_log.md` with the line `> Orrery is an educational tool. Its outputs are drafts for a qualified person to review, not accounting, audit, tax or financial advice. Check every figure before you rely on it.`, then the period, inputs found, policy values and the time.
 6. Create a task list with the stages below so progress is visible.
 
 Resolve each engine path from this skill's base directory: the engines live in sibling skills, at `../reconcile-cash/scripts/reconcile.py`, `../journal-screening/scripts/screen_journals.py`, `../variance-analysis/scripts/variance.py`, `../rolling-forecast/scripts/forecast.py`. Pass absolute paths to agents.
@@ -70,6 +72,7 @@ If the user says "continue the close" or "where are we", read `close_log.md` and
 
 ## Rules
 
+- Never present an output as final advice or as audited. Every deliverable is a draft for review.
 - Agents propose; people approve. Do not mark anything approved without the user saying so.
 - Quote numbers only from engine outputs.
 - Keep chat updates short; details live in the close folder.
