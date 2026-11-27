@@ -1,0 +1,11 @@
+{
+  "name": "orrery-fpa",
+  "displayName": "Orrery for FP&A",
+  "version": "0.1.0",
+  "description": "Six AI agents that run the month-end close for FP&A teams: reconcile cash, screen journals, explain variances with price-volume-mix, roll the forecast with P10/P90 bands, write CFO commentary and assemble the board pack. Every proposal waits for a named human sign-off.",
+  "author": { "name": "Christian Martinez", "url": "https://www.christianmartinez-thefinancialfox.com/" },
+  "keywords": ["fpa", "finance", "month-end close", "reconciliation", "variance analysis", "forecast", "board pack", "agents"],
+  "license": "MIT",
+  "homepage": "https://www.christianmartinez-thefinancialfox.com/",
+  "repository": "https://github.com/The-Financial-Fox/orrery-fpa"
+}
