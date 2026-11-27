@@ -1,0 +1,6 @@
+{
+  "name": "financial-fox",
+  "description": "Claude plugins for finance and FP&A teams by Christian Martinez, The Financial Fox.",
+  "owner": { "name": "Christian Martinez", "url": "https://www.christianmartinez-thefinancialfox.com/" },
+  "plugins": [{ "name": "orrery-fpa", "source": "./", "version": "0.1.0", "license": "MIT" }]
+}
