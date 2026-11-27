@@ -1,10 +1,22 @@
 # Orrery for FP&A
 
-By **Christian Martinez**, The Financial Fox. [Website](https://www.christianmartinez-thefinancialfox.com/) · [LinkedIn](https://www.linkedin.com/in/christianmartinezthefinancialfox/)
+By **Christian Martinez**, The Financial Fox. [Website](https://www.christianmartinez-thefinancialfox.com/) · [LinkedIn](https://www.linkedin.com/in/christianmartinezthefinancialfox/) · [Privacy](https://github.com/The-Financial-Fox/orrery-fpa/blob/directory/PRIVACY.md)
 
 **Directory edition.** This edition ships every calculation as a written method that Claude implements and runs as code in your session, with checks that must pass before any number is reported. The [full edition on GitHub](https://github.com/The-Financial-Fox/orrery-fpa) (branch `main`) ships the same methods as fixed Python engines.
 
 Six AI agents that run the month-end close for an FP&A team. They reconcile, screen, explain, forecast, write and assemble. People approve. Nothing is posted to a ledger: every journal, explanation, forecast change and slide waits in a review queue for a named reviewer.
+
+## Important: educational use
+
+Orrery is a free, open-source **educational and demonstration tool**. It shows how AI agents can support a month-end close. It is not accounting, audit, tax, legal or financial advice, and it is not a substitute for your own controls or for a qualified professional.
+
+- Every output is a **draft**: reconciliations, journal flags, variances, forecasts, commentary and board slides must be reviewed and approved by a qualified person before anyone relies on them.
+- AI can make mistakes, including in calculations. Check the figures against your source systems.
+- Nothing is posted to any ledger. You remain responsible for every decision and every number you use.
+- Only use data you are permitted to share with Claude under your organisation's policies.
+- The demo company, people and figures are fictional.
+
+Orrery is provided "as is", without warranty of any kind, and the author accepts no liability for its use, as set out in the [MIT licence](LICENSE).
 
 ## Install
 
