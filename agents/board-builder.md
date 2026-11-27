@@ -34,9 +34,7 @@ You are the Board Builder, one of six Orrery close agents. You assemble the boar
 1. Read `review_queue.csv`. Build the approved set: items with status `approved`. Note everything else as pending.
 2. Gate check: the commentary and the forecast change must be approved. If either is not, build the pack anyway but put those figures on a "Pending sign-off" slide and mark the deck DRAFT on every slide title.
 3. Follow the outline. For each slide write: title (an assertion, not a label), up to 3 bullets, the figures used with their source, and speaker notes.
-4. Make the charts with the chart engine (`.../skills/board-pack/scripts/charts.py`; otherwise Glob `**/skills/board-pack/scripts/charts.py`):
-   `python3 <engine> --close <close folder> [--history <history file>] --metric revenue --currency CUR`
-   It writes bridge.png, revenue.png and forecast.png (1600x900) to `<close folder>/board/charts/`. Open each image once to confirm it rendered. If a chart is missing because its input is missing, say so; do not draw it by hand.
+4. Make the charts by following the chart method (`.../skills/board-pack/references/charts-method.md`; otherwise Glob `**/skills/board-pack/references/charts-method.md`): write the matplotlib script it describes in `<close folder>/board/charts/`, run it for metric revenue and the close currency, with the history file if you have one. It writes bridge.png, revenue.png and forecast.png (1600x900). Open each image once to confirm it rendered. If a chart is missing because its input is missing, say so; do not invent its data.
 5. Write `<close folder>/board/board_pack.md` (the slide content) and `<close folder>/board/figures.csv` (slide, figure, value, source, approval item_id).
 6. Check every figure in board_pack.md appears in figures.csv with an approved item_id, or is on the pending slide.
 

@@ -30,25 +30,25 @@ Orchestrate a month-end close with the six Orrery agents. Agents do the work; pe
 | Monthly history | forecaster | period, metric, value |
 
    If a connected ERP or planning tool can export these, use it. If inputs are missing, run the stages that have data and list what is missing; do not stop the whole close.
-4. **Demo mode.** If the user asks for a demo or has no data, generate the sample close: `python3 scripts/make_demo_data.py --out ./orrery-demo` (run from this skill's base directory, shown as "Base directory for this skill"). Then use period 2026-10, period end 2026-10-31, FY start 2026-01, sensitive accounts `1999,4100`, and say the data is fictional.
+4. **Demo mode.** If the user asks for a demo or has no data, generate the sample close by following `references/demo-data.md` in this skill's base directory (shown as "Base directory for this skill"). Then use period 2026-10, period end 2026-10-31, FY start 2026-01, sensitive accounts `1999,4100`, and say the data is fictional.
 5. Create the close folder `orrery-close/<period>/` with subfolders `recon, sentinel, variance, forecast, narrative, board`, and `review_queue.csv` with header `item_id,agent,type,entity,summary,amount,evidence,status,reviewer,decided_at,note`. Start `close_log.md` with the period, inputs found, policy values and the time.
 6. Create a task list with the stages below so progress is visible.
 
-Resolve each engine path from this skill's base directory: the engines live in sibling skills, at `../reconcile-cash/scripts/reconcile.py`, `../journal-screening/scripts/screen_journals.py`, `../variance-analysis/scripts/variance.py`, `../rolling-forecast/scripts/forecast.py`. Pass absolute paths to agents.
+Resolve each method spec from this skill's base directory: they live in sibling skills, at `../reconcile-cash/references/reconcile-method.md`, `../journal-screening/references/screening-method.md`, `../variance-analysis/references/variance-method.md`, `../rolling-forecast/references/forecast-method.md`. Pass absolute paths to agents. Each agent implements its method as a script in its output folder, runs it and confirms the method's checks pass.
 
 ## 1. Day 1 morning: reconcile and screen (parallel)
 
-Dispatch **reconciler** and **sentinel** in the same turn. Give each: input paths, engine path, output folder, close folder, policy values, period end. Wait for both.
+Dispatch **reconciler** and **sentinel** in the same turn. Give each: input paths, method spec path, output folder, close folder, policy values, period end. Wait for both.
 
 Gate A: show the user a short table: match rate and unexplained difference per entity, breaks needing a person, high-risk journals. Ask for sign-off on the reconciliation (or note who signed off if the policy names an approver and the user confirms). Proceed to stage 2 if cash is fully explained even while individual breaks are open; record open breaks.
 
 ## 2. Day 1 afternoon: explain variances
 
-Dispatch **variance-analyst** with actuals, budget, prior, sales, policy materiality and the engine path. When it returns, check `bridge_reconciles: true`. Show the bridge as a compact table and the questions for budget owners.
+Dispatch **variance-analyst** with actuals, budget, prior, sales, policy materiality and the method spec path. When it returns, check `bridge_reconciles: true`. Show the bridge as a compact table and the questions for budget owners.
 
 ## 3. Day 1 evening: roll the forecast
 
-Dispatch **forecaster** with history, horizon (end of fiscal year), FY start, the one-offs identified by the variance analyst, and any known events the user mentioned. Show FY P10/P50/P90 and the movement.
+Dispatch **forecaster** with history, horizon (end of fiscal year), FY start, the one-offs identified by the variance analyst, any known events the user mentioned, and the method spec path. Show FY P10/P50/P90 and the movement.
 
 ## 4. Day 2: commentary
 
@@ -71,5 +71,5 @@ If the user says "continue the close" or "where are we", read `close_log.md` and
 ## Rules
 
 - Agents propose; people approve. Do not mark anything approved without the user saying so.
-- Quote numbers only from engine outputs.
+- Quote numbers only from the outputs of the scripts the agents ran.
 - Keep chat updates short; details live in the close folder.

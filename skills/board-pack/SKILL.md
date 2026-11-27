@@ -16,7 +16,7 @@ Assemble the board deck from approved close outputs and render it.
 
 1. Find the close folder `orrery-close/<period>/`. If the variance, forecast or commentary outputs are missing, say which and offer to run those stages first.
 2. Read `review_queue.csv`. Tell the user how many items are approved and pending. If the commentary or forecast is not approved, ask once: approve now, or build a DRAFT with a pending slide.
-3. Dispatch the **board-builder** agent with the close folder, period, currency, company name, the history file path, and absolute paths (from this skill's base directory) to `references/board-outline.md` and the chart engine `scripts/charts.py`.
+3. Dispatch the **board-builder** agent with the close folder, period, currency, company name, the history file path, and absolute paths (from this skill's base directory) to `references/board-outline.md` and the chart method `references/charts-method.md`.
 4. Render the deck from `board/board_pack.md` and `board/charts/`:
    - If a slide-deck artifact type is available in this session, create the deck from it.
    - If the user asked for PowerPoint, or no slide type exists, load the pptx skill and build a .pptx.
